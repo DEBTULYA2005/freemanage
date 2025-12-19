@@ -25,12 +25,12 @@ SECRET_KEY = 'django-insecure-te!xi)2mh8@15%3r1%j24-6_#kd1l@d-_4=r6gwmu)l!$a3nj@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['freemanage.onrender.com']
 
 
 # Application definition
 
-INSTALLED_APPS = [
+INSTALLED_APPS = [  
     'corsheaders',
     'rest_framework',
 
@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'App',
 ]
 
-MIDDLEWARE = [
+MIDDLEWARE = [  
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -61,7 +61,7 @@ ROOT_URLCONF = 'manage.urls'
 
 CORS_ALLOW_ALL_ORIGINS = True
 
-TEMPLATES = [
+TEMPLATES = [   
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
@@ -93,7 +93,7 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
 
-AUTH_PASSWORD_VALIDATORS = [
+AUTH_PASSWORD_VALIDATORS = [   
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
