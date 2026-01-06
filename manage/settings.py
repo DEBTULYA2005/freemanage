@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+import dj_database_url
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-te!xi)2mh8@15%3r1%j24-6_#kd1l@d-_4=r6gwmu)l!$a3nj@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['freemanage.onrender.com', "localhost", "127.0.0.1"]
 
@@ -80,13 +82,23 @@ WSGI_APPLICATION = 'manage.wsgi.application'
 
 
 # Database
+
+
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default="postgresql://root:YfXnVnNVKIJP7E2N3COS2RevoRpNpepz@dpg-d5ebo2chg0os7397k700-a/manage_vipp",
+        conn_max_age=600,
+        ssl_require=True
+    )
 }
 
 
