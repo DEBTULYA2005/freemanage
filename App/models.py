@@ -9,7 +9,7 @@ class StudentInfo(models.Model):
     class_name = models.CharField(max_length=20)
     contact = models.CharField(max_length=15)
     admission_date = models.DateField()
-    fees = models.CharField(max_length=4, default="0")
+    fees = models.IntegerField(default=0)
  
     created_at = models.DateTimeField(auto_now_add=True)
 
