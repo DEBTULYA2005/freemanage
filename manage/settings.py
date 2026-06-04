@@ -93,14 +93,20 @@ WSGI_APPLICATION = 'manage.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default="postgresql://root:YfXnVnNVKIJP7E2N3COS2RevoRpNpepz@dpg-d5ebo2chg0os7397k700-a/manage_vipp",
+#         conn_max_age=600,
+#         ssl_require=True
+#     )
+# }
 DATABASES = {
     'default': dj_database_url.config(
-        default="postgresql://root:YfXnVnNVKIJP7E2N3COS2RevoRpNpepz@dpg-d5ebo2chg0os7397k700-a/manage_vipp",
+        default=os.environ.get('DATABASE_URL'),
         conn_max_age=600,
         ssl_require=True
     )
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
