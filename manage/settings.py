@@ -100,6 +100,8 @@ WSGI_APPLICATION = 'manage.wsgi.application'
 #         ssl_require=True
 #     )
 # }
+
+# render external url: postgresql://newmanage_user:KAs6D3l4kzUzzUO8FXSiZih2FztPI6DS@dpg-d8gl2uugvqtc73etes40-a.oregon-postgres.render.com/newmanage
 DATABASES = {
     'default': dj_database_url.config(
         default=os.environ.get('DATABASE_URL'),
