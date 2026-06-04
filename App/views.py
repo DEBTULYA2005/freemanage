@@ -3,6 +3,7 @@ from django.db.models import Sum
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from django.http import HttpResponse
 from rest_framework import status
 
 from .models import StudentInfo, TimeTable, Income
@@ -111,3 +112,9 @@ def income(request):
             {"error": str(e)},
             status = status.HTTP_500_INTERNAL_SERVER_ERROR
         )
+
+# Health check---------
+
+@api_view(['GET'])
+def health_check(request):
+    return Response({"status": "ok"}, status=status.HTTP_200_OK)

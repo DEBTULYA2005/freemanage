@@ -7,6 +7,7 @@ urlpatterns = [
     path('timetable/',views.timetable_list_create),
     path('income/', views.income),
     path('students/<int:pk>/', views.student_update_delete),
+    path('health/', views.health_check),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
