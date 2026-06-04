@@ -30,6 +30,29 @@ def student_list_create(request):
             status=status.HTTP_500_INTERNAL_SERVER_ERROR
         )
 
+# Student update-delete.......API
+@api_view(['PUT', 'DELETE'])
+def student_update_delete(request, pk):
+    try:
+        student = StudentInfo.objects.get(pk=pk)
+    except StudentInfo.DoesNotExist:
+        return Response({"error": "Student not found"}, status=status.HTTP_404_NOT_FOUND)
+
+    try:
+        if request.method == 'PUT':
+            serializer = StudentInfoSerializer(student, data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        elif request.method == 'DELETE':
+            student.delete()
+            return Response({"message": "Student deleted successfully"}, status=status.HTTP_204_NO_CONTENT)
+
+    except Exception as e:
+        return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 # Timetable... API
 @api_view(['GET', 'POST'])
 def timetable_list_create(request):
